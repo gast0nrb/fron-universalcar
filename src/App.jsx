@@ -1,20 +1,26 @@
-import React from 'react'
-import Header from './components/Header'
-import Categorias from './components/Categorias'
-import WrapInfo from './components/WrapInfo'
-import Donde from './components/Donde'
-import SobreNosotros from './components/SobreNosotros'
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider
+} from "react-router-dom"
+
+import MainLayout from "./layout/MainLayout"
+import HomePage from "./pages/HomePage"
+import ErrorPage from "./pages/ErrorPage";
+
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+  <Route errorElement={<ErrorPage/>} path="/" element={<MainLayout/>}>
+    <Route index element={<HomePage/>}/>
+    <Route  element={<HomePage/>}/>
+  </Route>
+  )
+)
 
 function App() {
-  return (
-    <>
-      <Header/>
-      <SobreNosotros/>
-      <WrapInfo/>
-      <Categorias/>
-      <Donde/>
-    </>
-  )
+  return <RouterProvider router={router}/>
 };
 
 export default App

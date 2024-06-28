@@ -5,5 +5,9 @@
 
 body {
     font-family: monospace;
-    background-color: #F2EFEF;
+    background-color: whitesmoke;
+}
+
+html {
+    scroll-behavior: smooth;
 }

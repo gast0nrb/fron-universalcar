@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Dondefragment from "./DondeFragment";
+import Icon from "./Icon"
 
-const DondeSucursal = () => {
+const DondeSucursal = ({ title }) => {
   const Sucursales = [
     {
       id: 0,
@@ -16,7 +18,8 @@ const DondeSucursal = () => {
 
   const [currentSucursal, setCurrent] = useState(0);
   const [sucursal, setSucursal] = useState(Sucursales[0]);
-
+  const [active, setActive] = useState(false);
+ 
   function incrementaSucursal() {
     if (currentSucursal == Sucursales.length - 1) {
       setCurrent(0);
@@ -38,23 +41,22 @@ const DondeSucursal = () => {
   }
 
   return (
-    <div className="basis-5/12 grow group/sucursal m-2 md:my-3 bg-blue-color rounded-md p-2">
-      <h3 className="group-hover/sucursal:text-white text-center md:text-sm lg:text-lg text-neutral-300 font-bold">
-        SUCURSALES
+    <div
+    id="sucursales"
+        onMouseOver={()=> setActive(true)} onMouseLeave={()=> setActive(false)} 
+    className="basis-5/12 grow group/sucursal m-2 md:my-3 bg-blue-color rounded-md p-2">
+      <h3 className="flex justify-center group-hover/sucursal:text-white text-center md:text-sm lg:text-lg text-neutral-300 font-bold">
+        {title}
+      <Icon active={active}/>
       </h3>
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center w-full h-3/5">
         <button
           onClick={() => restaSucursal()}
           className="hover:scale-125 duration-300 hover:text-green-color bg-light-blue-color h-min my-auto w-4 rounded-full text-neutral-300 mr-2"
         >
           &#171;
         </button>
-        <iframe
-          className="mx-auto w-10/12"
-          src={sucursal.url}
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+        <Dondefragment url={sucursal.url} />
         <button
           onClick={() => incrementaSucursal()}
           className="hover:scale-125 duration-300 hover:text-green-color bg-light-blue-color h-min my-auto w-4 rounded-full text-neutral-300 ml-2"

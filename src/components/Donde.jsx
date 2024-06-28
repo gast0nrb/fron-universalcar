@@ -1,17 +1,19 @@
 import DondeSucursal from "./DondeSucursal";
-import DondeWeb from "./DondeWeb";
+import Plataformas from "./Plataformas";
+
 
 const Donde = () => {
+
   return (
     <>
       <hr className="mt-20 mb-6 bg-light-blue-color border-2" />
-      <h2 className="text-center font-extrabold text-blue-color lg:text-2xl md:text-xl mt-10 tracking-widest">
-        ¿DONDE?
+      <h2 className="text-center font-extrabold text-blue-color lg:text-4xl md:text-xl mt-10 tracking-widest">
+        ¿DÓNDE ESTAMOS?
       </h2>
-      <div className="md:flex-wrap lg:flex mx-auto">
-      <DondeSucursal/>
-      <DondeWeb/>
-      </div>
+      <section id="donde" className="md:flex-wrap lg:flex mx-auto mb-20">
+      <DondeSucursal title={"SUCURSALES"}/>
+      <Plataformas title={"ONLINE"}/>
+      </section>
     </>
   );
 };
